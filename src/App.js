@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import Robot from './lib/Robot';
+
 import './scss/style.scss';
 
 class App extends Component {
@@ -8,7 +10,6 @@ class App extends Component {
     robots: [
       {
         id: 0,
-        grid: '',
         coordinates: '',
         instructions: ''
       }
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   handleRobotChange = ({ target: { name, value, id }}) => {
-    const updatedRobot = Object.assign({}, this.state.robots[id], { [name]: value, grid: this.state.grid });
+    const updatedRobot = Object.assign({}, this.state.robots[id], { [name]: value });
 
     const robots = this.state.robots.map((robot, i) => {
       if(updatedRobot.id === i) {
@@ -34,6 +35,15 @@ class App extends Component {
     });
 
     this.setState({ robots });
+  }
+
+  runInstructions = () => {
+    const robots = this.state.robots.map(robot => {
+      const { coordinates, instructions } = robot;
+      return new Robot(this.state.grid, coordinates, instructions);
+    });
+
+    this.setState({ output: Robot.runMultipleRobots(robots)});
   }
 
   addRobot = () => {
@@ -91,7 +101,14 @@ class App extends Component {
           )}
         </form>
         <button onClick={this.addRobot}>Add Robot</button>
-        <button>Run Instructions</button>
+        <button onClick={this.runInstructions}>Run Instructions</button>
+
+        { this.state.output &&
+          <div>
+            <h2>The new coordinates for the robot(s) are;</h2>
+            <p>{ this.state.output }</p>
+          </div>
+        }
       </main>
     )
   }
