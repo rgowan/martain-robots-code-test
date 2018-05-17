@@ -6,7 +6,7 @@
   "author": "rgowan <ranegowan@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "nyc --reporter=text mocha tests.js --exit",
+    "test": "nyc --reporter=text mocha ./tests/Robot.test.js --exit",
     "start": "webpack-dev-server"
   },
   "dependencies": {

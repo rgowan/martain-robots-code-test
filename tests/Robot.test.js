@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Robot = require('./robot');
+const Robot = require('../src/lib/Robot');
 
 describe('creating a new robot', () => {
   it('should be given grid boundries', done => {
@@ -164,7 +164,8 @@ describe('multiple robots', () => {
       new Robot('10 10', '8 8 N', 'FFF')
     ];
 
-    expect(Robot.runMultipleRobots(robotArray)).to.eq('2 4 N, 6 6 S, 8 10 N LOST');
+    expect(Robot.runMultipleRobots(robotArray)).to.deep.equal(['2 4 N', '6 6 S', '8 10 N LOST']);
+
     done();
   });
 });

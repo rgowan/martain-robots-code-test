@@ -88,7 +88,7 @@ class Robot {
       return robot.runInstructions();
     });
 
-    return results.join(', ');
+    return results;
   }
 }
 

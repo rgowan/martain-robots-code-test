@@ -15,7 +15,7 @@ class App extends Component {
       }
     ],
     grid: '',
-    output: ''
+    output: []
   }
 
   handleGridChange = ({ target: { value }}) => {
@@ -103,10 +103,14 @@ class App extends Component {
         <button onClick={this.addRobot}>Add Robot</button>
         <button onClick={this.runInstructions}>Run Instructions</button>
 
-        { this.state.output &&
+        { this.state.output.length > 0 &&
           <div>
             <h2>The new coordinates for the robot(s) are;</h2>
-            <p>{ this.state.output }</p>
+            <ul>
+              { this.state.output.map((result, i) => 
+                <li key={i}>{ result }</li>
+              )}
+            </ul>
           </div>
         }
       </main>
