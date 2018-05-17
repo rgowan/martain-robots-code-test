@@ -1,0 +1,13 @@
+{
+  "name": "martain-robots-code-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rgowan/martain-robots-code-test.git",
+  "author": "rgowan <ranegowan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
+    "nyc": "^11.8.0"
+  }
+}
