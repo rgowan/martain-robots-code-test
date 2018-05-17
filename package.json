@@ -5,6 +5,9 @@
   "repository": "git@github.com:rgowan/martain-robots-code-test.git",
   "author": "rgowan <ranegowan@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "nyc --reporter=text mocha tests.js --exit"
+  },
   "dependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.1.1",
