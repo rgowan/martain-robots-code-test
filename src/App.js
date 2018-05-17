@@ -33,7 +33,18 @@ class App extends Component {
       return robot;
     });
 
-    this.setState({ robots }, () => console.log(this.state));
+    this.setState({ robots });
+  }
+
+  addRobot = () => {
+    const robot = {
+      id: this.state.robots.length,
+      grid: '',
+      coordinates: '',
+      instructions: ''
+    }
+
+    this.setState({ robots: this.state.robots.concat(robot)});
   }
 
   render() {
@@ -79,7 +90,7 @@ class App extends Component {
             </div>
           )}
         </form>
-        <button>Add Robot</button>
+        <button onClick={this.addRobot}>Add Robot</button>
         <button>Run Instructions</button>
       </main>
     )
