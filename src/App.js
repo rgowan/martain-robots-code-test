@@ -73,8 +73,6 @@ class App extends Component {
             />
           </div>
 
-          <hr />
-
           { this.state.robots.map((robot, i) => 
             <div key={i} className="robot">
               <div>

@@ -44,7 +44,3 @@
 //   new Robot('10 10', '4 6 E', 'FFLFFRRFF'),
 //   new Robot('10 10', '8 8 N', 'FFF')
 // ];
-
-// Robot.runMultipleRobots(robotArray);
-
-// robot instances can be created here!
