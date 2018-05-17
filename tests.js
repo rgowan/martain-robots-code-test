@@ -4,7 +4,6 @@ const expect = chai.expect;
 const Robot = require('./robot');
 
 describe('creating a new robot', () => {
-
   it('should be given grid boundries', done => {
     const robot = new Robot('10 10');
     expect(robot.grid).to.eq('10 10');
@@ -22,5 +21,32 @@ describe('creating a new robot', () => {
     expect(robot.instructions).to.eq('FFLRF');
     done();
   });
+});
 
+describe('moving a robot', () => {
+  describe('moving robot with "F" instruction', () => {
+    it('should move robot y+1', done => {
+      const robot = new Robot('10 10', '5 5 N', 'F');
+      expect(robot.runInstructions()).to.eq('5 6 N');
+      done();
+    });
+
+    it('should move robot y-1', done => {
+      const robot = new Robot('10 10', '5 5 S', 'F');
+      expect(robot.runInstructions()).to.eq('5 4 S');
+      done();
+    });
+
+    it('should move robot x+1', done => {
+      const robot = new Robot('10 10', '5 5 E', 'F');
+      expect(robot.runInstructions()).to.eq('6 5 E');
+      done();
+    });
+
+    it('should move robot x-1', done => {
+      const robot = new Robot('10 10', '5 5 W', 'F');
+      expect(robot.runInstructions()).to.eq('4 5 W');
+      done();
+    })
+  });
 });
