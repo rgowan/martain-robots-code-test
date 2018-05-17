@@ -10,6 +10,7 @@ class Robot {
 
     instructionsArray.forEach(string => {
       if(string === 'F') this.moveRobot();
+      if(string === 'L' || string === 'R') this.changeDirection(string);
     });
 
     return this.coordinates;
@@ -36,6 +37,29 @@ class Robot {
     }
 
     this.coordinates = `${xValue} ${yValue} ${currentDirection}`;
+  }
+
+  changeDirection(string) {
+    let currentDirection = this.coordinates.split(' ')[2];
+
+    switch(currentDirection) {
+      case 'N':
+        (string === 'L') ? currentDirection = 'W' : currentDirection = 'E';
+        break;
+      case 'S':
+        (string === 'L') ? currentDirection = 'E' : currentDirection = 'W';
+        break;
+      case 'E':
+        (string === 'L') ? currentDirection = 'N' : currentDirection = 'S';
+        break;
+      case 'W':
+        (string === 'L') ? currentDirection = 'S' : currentDirection = 'N';
+        break;
+    }
+
+    const updatedCoords = this.coordinates.split(' ');
+    updatedCoords[2] = currentDirection;
+    this.coordinates = updatedCoords.join(' ');
   }
 }
 
