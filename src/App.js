@@ -101,11 +101,11 @@ class App extends Component {
           )}
         </form>
         <button onClick={this.addRobot}>Add Robot</button>
-        <button onClick={this.runInstructions}>Run Instructions</button>
+        <button onClick={this.runInstructions} className="success">Run Instructions</button>
 
         { this.state.output.length > 0 &&
-          <div>
-            <h2>The new coordinates for the robot(s) are;</h2>
+          <div class="results">
+            <p>The new coordinates for the robot(s)</p>
             <ul>
               { this.state.output.map((result, i) => 
                 <li key={i}>{ result }</li>
