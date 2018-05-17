@@ -12,7 +12,28 @@ class App extends Component {
         coordinates: '',
         instructions: ''
       }
-    ]
+    ],
+    grid: '',
+    output: ''
+  }
+
+  handleGridChange = ({ target: { value }}) => {
+    this.setState({ grid: value });
+  }
+
+  handleRobotChange = ({ target: { name, value, id }}) => {
+    const updatedRobot = Object.assign({}, this.state.robots[id], { [name]: value, grid: this.state.grid });
+
+    const robots = this.state.robots.map((robot, i) => {
+      if(updatedRobot.id === i) {
+        robot = updatedRobot;
+        return robot;
+      }
+
+      return robot;
+    });
+
+    this.setState({ robots }, () => console.log(this.state));
   }
 
   render() {
@@ -27,6 +48,7 @@ class App extends Component {
               type="text"
               name="grid"
               placeholder="50 50"
+              onChange={this.handleGridChange}
             />
           </div>
 
@@ -41,15 +63,17 @@ class App extends Component {
                   name="coordinates"
                   placeholder="10 10 N"
                   id={i}
+                  onChange={this.handleRobotChange}
                 />
               </div>
               <div>
-                <label>Coordinates (x y d)</label>
+                <label>Instructions (F L R)</label>
                 <input
                   type="text"
-                  name="coordinates"
-                  placeholder="10 10 N"
+                  name="instructions"
+                  placeholder="FFFLLLF"
                   id={i}
+                  onChange={this.handleRobotChange}
                 />
               </div>
             </div>
