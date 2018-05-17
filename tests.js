@@ -43,7 +43,7 @@ describe('creating a new robot', () => {
 
     expect(constructor).to.throw(Error, 'Grid values must be less than 50');
     done();
-  })
+  });
 });
 
 describe('moving a robot', () => {
