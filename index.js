@@ -38,3 +38,9 @@
 // move robot instance
 // add lost functionality
 
+
+const Robot = require('./robot');
+
+const robot = new Robot('10 10', '5 5 W', 'FF');
+
+console.log(robot.runInstructions());
