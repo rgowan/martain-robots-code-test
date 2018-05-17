@@ -34,13 +34,13 @@
 
 // --------------------------------------------------
 
-// create robot instance
-// move robot instance
-// add lost functionality
+// create robot instance DONE
+// move robot instance DONE
+// add lost functionality 
 
 
 const Robot = require('./robot');
 
-const robot = new Robot('10 10', '5 5 W', 'R');
+const robot = new Robot('10 10', '1 1 W', 'FF');
 
 console.log(robot.runInstructions());

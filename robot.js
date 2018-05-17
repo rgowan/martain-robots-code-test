@@ -3,6 +3,8 @@ class Robot {
     this.grid = grid;
     this.coordinates = coordinates;
     this.instructions = instructions;
+
+    this.lost = false;
   }
 
   runInstructions() {
@@ -11,9 +13,11 @@ class Robot {
     instructionsArray.forEach(string => {
       if(string === 'F') this.moveRobot();
       if(string === 'L' || string === 'R') this.changeDirection(string);
+
+      if(this.lost) return false;
     });
 
-    return this.coordinates;
+    return `${this.coordinates}${(this.lost) ? ' LOST' : ''}`;
   }
 
   moveRobot() {
@@ -23,20 +27,39 @@ class Robot {
 
     switch(currentDirection) {
       case 'N':
-        yValue +=1;
+        var newValue = yValue + 1;
+        this.checkRobotBoundries('y', newValue);
+        if(!this.lost) yValue = newValue;
         break;
       case 'S':
-        yValue -=1;
+        var newValue = yValue - 1;
+        this.checkRobotBoundries('y', newValue);
+        if(!this.lost) yValue = newValue;
         break;
       case 'E':
-        xValue +=1;
+        var newValue = xValue + 1;
+        this.checkRobotBoundries('x', newValue);
+        if(!this.lost) xValue = newValue;
         break;
       case 'W':
-        xValue -=1;
+        var newValue = xValue - 1;
+        this.checkRobotBoundries('x', newValue);
+        if(!this.lost) xValue = newValue;
         break;
     }
 
     this.coordinates = `${xValue} ${yValue} ${currentDirection}`;
+  }
+
+  checkRobotBoundries(axis, value) {
+    const gridXValue = parseInt(this.grid.split(' ')[0]);
+    const gridYValue = parseInt(this.grid.split(' ')[1]);
+
+    if(axis === 'x') {
+      if(value > gridXValue || value < 0) this.lost = true;
+    } else {
+      if(value > gridYValue || value < 0) this.lost = true;
+    }
   }
 
   changeDirection(string) {

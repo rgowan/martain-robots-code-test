@@ -47,6 +47,58 @@ describe('moving a robot', () => {
       const robot = new Robot('10 10', '5 5 W', 'F');
       expect(robot.runInstructions()).to.eq('4 5 W');
       done();
-    })
+    });
+  });
+
+  describe('change robot direction with "L" instruction', () => {
+    it('should change current direction from "N" to "W"', done => {
+      const robot = new Robot('10 10', '5 5 N', 'L');
+      expect(robot.runInstructions()).to.eq('5 5 W');
+      done();
+    });
+
+    it('should change current direction from "W" to "S"', done => {
+      const robot = new Robot('10 10', '5 5 W', 'L');
+      expect(robot.runInstructions()).to.eq('5 5 S');
+      done();
+    });
+
+    it('should change current direction from "S" to "E"', done => {
+      const robot = new Robot('10 10', '5 5 S', 'L');
+      expect(robot.runInstructions()).to.eq('5 5 E');
+      done();
+    });
+
+    it('should change current direction from "E" to "N"', done => {
+      const robot = new Robot('10 10', '5 5 E', 'L');
+      expect(robot.runInstructions()).to.eq('5 5 N');
+      done();
+    });
+  });
+
+  describe('change robot direction with "R" instruction', () => {
+    it('should change current direction from "N" to "E"', done => {
+      const robot = new Robot('10 10', '5 5 N', 'R');
+      expect(robot.runInstructions()).to.eq('5 5 E');
+      done();
+    });
+
+    it('should change current direction from "E" to "S"', done => {
+      const robot = new Robot('10 10', '5 5 E', 'R');
+      expect(robot.runInstructions()).to.eq('5 5 S');
+      done();
+    });
+
+    it('should change current direction from "S" to "W"', done => {
+      const robot = new Robot('10 10', '5 5 S', 'R');
+      expect(robot.runInstructions()).to.eq('5 5 W');
+      done();
+    });
+
+    it('should change current direction from "W" to "N"', done => {
+      const robot = new Robot('10 10', '5 5 W', 'R');
+      expect(robot.runInstructions()).to.eq('5 5 N');
+      done();
+    });
   });
 });
