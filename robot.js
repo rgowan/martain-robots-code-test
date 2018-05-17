@@ -82,6 +82,14 @@ class Robot {
   updateCoordinates() {
     this.coordinates = `${this.xValue} ${this.yValue} ${this.currentDirection}`;
   }
+
+  static runMultipleRobots(arrayOfRobots) {
+    const results = arrayOfRobots.map(robot => {
+      return robot.runInstructions();
+    });
+
+    return results.join(', ');
+  }
 }
 
 module.exports = Robot; 

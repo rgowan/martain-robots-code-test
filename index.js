@@ -37,8 +37,14 @@
 // create robot instance DONE
 // move robot instance DONE
 // add lost functionality DONE
-
+// multiple robots
 
 const Robot = require('./robot');
 
-const robot = new Robot('51 51', '1 1 W', 'FF');
+const robotArray = [
+  new Robot('5 5', '2 2 N', 'FF'),
+  new Robot('10 10', '4 6 E', 'FFLFFRRFF'),
+  new Robot('10 10', '8 8 N', 'FFF')
+];
+
+console.log(Robot.runMultipleRobots(robotArray));

@@ -155,3 +155,16 @@ describe('robot should keep within grid boundries', () => {
     });
   });
 });
+
+describe('multiple robots', () => {
+  it('should handle running multiple robots', done => {
+    const robotArray = [
+      new Robot('5 5', '2 2 N', 'FF'),
+      new Robot('10 10', '4 6 E', 'FFLFFRRFF'),
+      new Robot('10 10', '8 8 N', 'FFF')
+    ];
+
+    expect(Robot.runMultipleRobots(robotArray)).to.eq('2 4 N, 6 6 S, 8 10 N LOST');
+    done();
+  });
+});
