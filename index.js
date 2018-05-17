@@ -36,7 +36,7 @@
 
 // create robot instance DONE
 // move robot instance DONE
-// add lost functionality 
+// add lost functionality DONE
 
 
 const Robot = require('./robot');

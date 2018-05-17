@@ -22,12 +22,26 @@ describe('creating a new robot', () => {
     done();
   });
 
-  it('should be given default values', done => {
+  it('should be given default values if needed', done => {
     const robot = new Robot();
 
     expect(robot.grid).to.eq('50 50');
     expect(robot.coordinates).to.eq('0 0 N');
     expect(robot.instructions).to.eq('');
+    done();
+  });
+
+  it('should throw an error if instructions string is longer than 100 characters', done => {
+    const constructor = () => new Robot('50 50', '0 0 N', 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+
+    expect(constructor).to.throw(Error, 'Instructions must be less than 100 characters');
+    done();
+  });
+
+  it('should throw an error if grid values are over 50', done => {
+    const constructor = () => new Robot('51 51', '0 0 N', 'F');
+
+    expect(constructor).to.throw(Error, 'Grid values must be less than 50');
     done();
   })
 });
