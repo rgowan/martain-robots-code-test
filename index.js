@@ -41,6 +41,4 @@
 
 const Robot = require('./robot');
 
-const robot = new Robot('10 10', '1 1 W', 'FF');
-
-console.log(robot.runInstructions());
+const robot = new Robot('51 51', '1 1 W', 'FF');

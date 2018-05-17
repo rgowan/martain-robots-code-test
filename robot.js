@@ -1,5 +1,5 @@
 class Robot {
-  constructor(grid, coordinates, instructions) {
+  constructor(grid='50 50', coordinates='0 0 N', instructions='') {
     this.grid = grid;
     this.coordinates = coordinates;
     this.instructions = instructions;
@@ -10,6 +10,9 @@ class Robot {
     this.currentDirection = this.coordinates.split(' ')[2];
     this.gridX = parseInt(this.grid.split(' ')[0]);
     this.gridY = parseInt(this.grid.split(' ')[1]);
+
+    if(this.gridX > 50 || this.gridY > 50) throw new Error('Grid values must be less than 50');
+    if(instructions.length > 99) throw new Error('Instructions must be less than 100 characters');
   }
 
   runInstructions() {
@@ -48,7 +51,7 @@ class Robot {
         if(!this.lost) this.xValue = newValue;
         break;
     }
-    
+
     this.updateCoordinates();
   }
 

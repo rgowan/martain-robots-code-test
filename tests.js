@@ -21,6 +21,15 @@ describe('creating a new robot', () => {
     expect(robot.instructions).to.eq('FFLRF');
     done();
   });
+
+  it('should be given default values', done => {
+    const robot = new Robot();
+
+    expect(robot.grid).to.eq('50 50');
+    expect(robot.coordinates).to.eq('0 0 N');
+    expect(robot.instructions).to.eq('');
+    done();
+  })
 });
 
 describe('moving a robot', () => {
