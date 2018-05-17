@@ -102,3 +102,33 @@ describe('moving a robot', () => {
     });
   });
 });
+
+describe('robot should keep within grid boundries', () => {
+  describe('y axis', () => {
+    it('should return last coordinates plus "LOST" if robot moves above grid max', done => {
+      const robot = new Robot('10 10', '5 9 N', 'FF');
+      expect(robot.runInstructions()).to.eq('5 10 N LOST');
+      done();
+    });
+  
+    it('should return last coordinates plus "LOST" if robot moves below 0', done => {
+      const robot = new Robot('10 10', '5 1 S', 'FF');
+      expect(robot.runInstructions()).to.eq('5 0 S LOST');
+      done();
+    });
+  });
+
+  describe('x axis', () => {
+    it('should return last coordinates plus "LOST" if robot moves above grid max', done => {
+      const robot = new Robot('10 10', '9 5 E', 'FF');
+      expect(robot.runInstructions()).to.eq('10 5 E LOST');
+      done();
+    });
+  
+    it('should return last coordinates plus "LOST" if robot moves below 0', done => {
+      const robot = new Robot('10 10', '1 5 W', 'FF');
+      expect(robot.runInstructions()).to.eq('0 5 W LOST');
+      done();
+    });
+  });
+});
